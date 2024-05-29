@@ -1,0 +1,72 @@
+﻿<Window x:Class="Eplan.EplAddIn.MSP.ConfigWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Motor Starter with Protection" Height="303" Width="460"
+        Icon="pack://application:,,,/Resources/applications.ico"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        WindowStyle="SingleBorderWindow">
+    <Grid Margin="6">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Main Panel -->
+        <Border Grid.Row="0" BorderBrush="Black" BorderThickness="1" Margin="0,0,0,6">
+            <Grid Margin="6">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Content="Тип защиты:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"/>
+                <ComboBox x:Name="protectionTypeComboBox" Grid.Row="0" Grid.Column="1" Margin="5"
+                ItemsSource="{Binding ProtectionTypes}" Height="23" SelectionChanged="ProtectionTypeComboBox_SelectionChanged"/>
+
+
+                <Label Content="Уставка защиты:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
+                <TextBox x:Name="protectionValueTextBox" Grid.Row="1" Grid.Column="1" Margin="5" Height="23"/>
+
+                <Label Content="Заказной номер:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
+                <ComboBox x:Name="orderNumberComboBox" Grid.Row="2" Grid.Column="1" Margin="5"
+                          ItemsSource="{Binding OrderNumbers}" Height="23"/>
+
+                <Label Content="Тип пуска:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center"/>
+                <ComboBox x:Name="startTypeComboBox" Grid.Row="3" Grid.Column="1" Margin="5"
+                          ItemsSource="{Binding StartTypes}" Height="23"/>
+
+                <Label Content="Клеммы:" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center"/>
+                <CheckBox x:Name="clampsCheckBox" Grid.Row="4" Grid.Column="1" Margin="5" VerticalAlignment="Center" Height="23"/>
+
+                <Label Content="Мотор Ном. мощность:" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center"/>
+                <TextBox x:Name="motorPowerTextBox" Grid.Row="5" Grid.Column="1" Margin="5" Height="23"/>
+            </Grid>
+        </Border>
+
+        <!-- Buttons -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="generateButton" Width="162" Height="23" Margin="5" Click="GenerateButton_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Eplan.EplAddIn.MSP;component/Resources/media_play_green.png" Width="16" Height="16" Margin="0,0,5,0"/>
+                    <TextBlock VerticalAlignment="Center">Генерировать</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button x:Name="cancelButton" Width="162" Height="23" Margin="5" Click="CancelButton_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Eplan.EplAddIn.MSP;component/Resources/cancel.png" Width="16" Height="16" Margin="0,0,5,0"/>
+                    <TextBlock VerticalAlignment="Center">Отмена</TextBlock>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>
